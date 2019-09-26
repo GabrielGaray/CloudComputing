@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: '2019-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: TP3
+
+Resources:
+ Envios:
+   Type: AWS::Serverless::Function
+   Properties:
+     Handler: index.handler
+     Runtime: nodejs8.10
+     Events:
+       CreateEnvio:
+         Type: Api
+         Properties:
+           Path: /envios
+           Method: post
+       ObtenerEnviosPendiente:
+         Type: Api
+         Properties:
+           Path: /envios/pendientes
+           Method: get
+       ObtenerEnvio:
+         Type: Api
+         Properties:
+           Path: /envios/{id}
+           Method: get
+       SetearEnvioEntregado:
+         Type: Api
+         Properties:
+           Path: /envios/{idEnvio}/entregado
+           Method: post
