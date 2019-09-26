@@ -100,21 +100,17 @@ exports.handler = async event => {
             })
         switch (event.resource) {
             case '/envios':
-
-                break;
+                return { body: JSON.stringify(await getEnvio(body)) }
             case '/envios/pendientes':
                 return { body: JSON.stringify(await getEnviosPendientes()) }
             case '/envios/{id}':
-
-                break;
+                return { body: JSON.stringify(await crearEnvio(id)) }
             case '/envios/{idEnvio}/entregado':
-
-                break;
+                return { body: JSON.stringify(await setEnvioEntregado(idEnvio)) }
             default:
                 break;
         }
     } catch (error) {
         console.log(error);
-
     }
 }
